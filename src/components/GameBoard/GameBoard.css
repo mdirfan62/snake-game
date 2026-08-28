@@ -1,0 +1,201 @@
+.board-container {
+  width: min(100%, 560px);
+  margin: 0 auto;
+}
+
+.game-board {
+  position: relative;
+  display: grid;
+  width: 100%;
+  aspect-ratio: 1;
+  overflow: hidden;
+  border: 3px solid #a9bdca;
+  border-radius: 16px;
+  background: #dce8f0;
+  box-shadow:
+    inset 0 0 20px rgba(15, 23, 42, 0.06),
+    0 10px 25px rgba(15, 23, 42, 0.08);
+}
+
+/* Grid cells */
+.game-cell {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Snake */
+.snake-piece {
+  position: relative;
+  z-index: 2;
+  width: 82%;
+  height: 82%;
+}
+
+.snake-body {
+  background: #39a852;
+  border-radius: 45%;
+  box-shadow: 0 2px 5px rgba(40, 120, 60, 0.25);
+  animation: snakeAppear 0.12s ease-out;
+}
+
+.snake-head {
+  width: 90%;
+  height: 90%;
+  background: #178c3a;
+  border-radius: 48%;
+  box-shadow: 0 3px 7px rgba(20, 100, 45, 0.3);
+  transform: scale(1.05);
+}
+
+@keyframes snakeAppear {
+  from {
+    transform: scale(0.7);
+  }
+
+  to {
+    transform: scale(1);
+  }
+}
+
+/* Food */
+.food-dot {
+  width: 55%;
+  height: 55%;
+  border-radius: 50%;
+  background: #f04444;
+  box-shadow: 0 2px 8px rgba(220, 50, 50, 0.35);
+  animation: foodPulse 0.9s ease-in-out infinite alternate;
+}
+
+@keyframes foodPulse {
+  from {
+    transform: scale(0.85);
+  }
+
+  to {
+    transform: scale(1);
+  }
+}
+
+/* Overlay */
+.game-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background: rgba(238, 245, 249, 0.9);
+  backdrop-filter: blur(5px);
+  animation: overlayAppear 0.25s ease;
+}
+
+@keyframes overlayAppear {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.overlay-content {
+  max-width: 320px;
+  text-align: center;
+}
+
+.overlay-icon {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 40px;
+}
+
+.overlay-content h2 {
+  margin-bottom: 8px;
+  color: #203040;
+  font-size: 28px;
+}
+
+.overlay-content p {
+  margin-bottom: 20px;
+  color: #647887;
+  line-height: 1.5;
+}
+
+.overlay-content button {
+  border: none;
+  border-radius: 10px;
+  padding: 11px 22px;
+  background: #1677a8;
+  color: #ffffff;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.overlay-content button:hover {
+  transform: translateY(-2px);
+  background: #12658e;
+}
+
+/* Tablet */
+@media (max-width: 700px) {
+  .board-container {
+    width: 100%;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .game-board {
+    border-width: 2px;
+    border-radius: 12px;
+  }
+
+  .snake-piece {
+    width: 80%;
+    height: 80%;
+  }
+
+  .snake-head {
+    width: 88%;
+    height: 88%;
+  }
+
+  .overlay-content h2 {
+    font-size: 24px;
+  }
+
+  .overlay-icon {
+    font-size: 34px;
+  }
+
+  .overlay-content p {
+    font-size: 13px;
+  }
+}
+
+/* Small Phones */
+@media (max-width: 350px) {
+  .snake-piece {
+    width: 76%;
+    height: 76%;
+  }
+
+  .snake-head {
+    width: 84%;
+    height: 84%;
+  }
+
+  .overlay-content h2 {
+    font-size: 21px;
+  }
+
+  .overlay-icon {
+    font-size: 30px;
+  }
+}
